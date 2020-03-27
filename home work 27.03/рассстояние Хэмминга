@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+	string first, second;
+	getline(cin, first);
+	getline(cin, second);
+	if (first.length() != second.length()) {
+		cout << "IMPOSSIBLE";
+		return 0;
+	}
+	int count = 0;
+	for (int i = 0; i < int(first.length()); ++i)
+		if (first[i] != second[i])
+			++count;
+	cout << count;
+	return 0;
+}
