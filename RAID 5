@@ -1,0 +1,63 @@
+#include <iostream>
+#include <vector>
+#include <ctime>
+using namespace std;
+ 
+ 
+int main()
+{
+    int m = 10;
+    while (m--)
+    {
+        srand(time(nullptr));
+ 
+        int l, n;
+        l = rand() % 1000 + 2;
+        n = rand() % 1000 + 2;
+ 
+ 
+        vector<vector<int>> buffer(l, vector<int>(n));
+ 
+        for (int i = 0; i < l; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                buffer[i][j] = rand() % 2000000009;
+            }
+        }
+ 
+        vector<int> control(n);
+ 
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                control[i] ^= buffer[j][i];
+            }
+        }
+ 
+        int destroy = rand() % k;
+ 
+        vector<int> test = buffer[destroy];
+ 
+        buffer[destroy] = control;
+ 
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                if (j == destroy) continue;
+                buffer[destroy][i] ^= buffer[j][i];
+            }
+        }
+ 
+        if (buffer[destroy] == test)
+        {
+            cout << "YES" << endl;
+        } else
+        {
+            cout << "NO" << endl;
+            return 0;
+        }
+    }
+}
